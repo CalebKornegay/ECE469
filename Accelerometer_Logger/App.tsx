@@ -14,7 +14,7 @@ export default function App() {
     });
     const [timediff, setTimediff] = useState<number>(0.0);
 
-    const updateinterval = 1;
+    const updateinterval = 1; // ms
 
     Accelerometer.setUpdateInterval(updateinterval);
     Accelerometer.addListener(setData);
