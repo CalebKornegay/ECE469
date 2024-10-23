@@ -7,6 +7,11 @@ let start = Date.now()
 
 type AccelerometerData = AccelerometerMeasurement & {diff: number};
 
+const size = 1000;
+let spot = 0;
+const hist: AccelerometerData[] = [...Array<AccelerometerData>(size)].fill({x: 0, y: 0, z: 0, timestamp: 0, diff: 0});
+
+
 export default function App() {
     const [{ x, y, z, timestamp }, setData] = useState<AccelerometerMeasurement>({
         x: 0,
@@ -14,9 +19,9 @@ export default function App() {
         z: 0,
         timestamp: 0
     });
-    const [timediff, setTimediff] = useState<number>(0.0);
+    // const [timediff, setTimediff] = useState<number>(0.0);
     const [sub, setSub] = useState<any>(null);
-    const [hist, setHist] = useState<AccelerometerData[]>([]);
+    // const [hist, setHist] = useState<AccelerometerData[]>([]);
 
     const updateinterval = 0; // ms
 
@@ -39,10 +44,15 @@ export default function App() {
     useEffect(() => {
         const diff = (Date.now() - start) / 1000;
         start = Date.now();
-        setTimediff(diff);
+        // setTimediff(diff);
         // console.log(diff, timestamp, start);
         // console.log(x, y, z, diff);
-        setHist([...hist, { x, y, z, timestamp, diff } ]);
+        // setHist([...hist, { x, y, z, timestamp, diff } ]);
+        hist[spot] = {x: x, y: y, z: z, timestamp: 0, diff: diff};
+        spot = (spot + 1) % size;
+        if (spot == 0) {
+            console.log(hist);
+        }
     }, [x, y, z, setData])
 
     return (
