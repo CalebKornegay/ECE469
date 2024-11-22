@@ -49,7 +49,7 @@ export default function App() {
     for (let i = 1; i <= 60; i++) {
       const gender: string = genders[i.toString().padStart(2, "0") as keyof typeof genders].gender;
       for (let k = 0; k < 10; k++) {
-        for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < 50; j++) {
           const padded_i = i.toString().padStart(2, "0");
           const identifier = `${k}_${padded_i}_${j}`;
 
@@ -62,8 +62,9 @@ export default function App() {
               sound.setOnPlaybackStatusUpdate((status) => {
                 if (status.isLoaded && status.didJustFinish) {
                   hist = hist.filter((value => value.x != 0 && value.y != 0 && value.z != 0));
-                  const out: Out_Data = {history: hist, gender: gender, file_name: identifier}
-                  onStopButtonPress(out);
+                  const out: Out_Data = {history: hist, gender: gender, file_name: identifier};
+                  console.log(out);
+                  onStopButtonPress();
                   resolve();
                 }
               });
@@ -79,11 +80,10 @@ export default function App() {
     }
   };
 
-  const onStopButtonPress = (out: Out_Data) => {
+  const onStopButtonPress = () => {
     if (sub) {
       sub.remove();
     }
-    console.dir(out, {'maxArrayLength': null});
     spot = 0;
     hist = zero_hist();
   };
