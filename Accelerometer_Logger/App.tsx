@@ -7,21 +7,16 @@ import { Audio } from "expo-av";
 import AudioFiles from "./Audio";
 import genders from './genders';
 
-let start = Date.now();
+type AccelerometerData = Omit<AccelerometerMeasurement, "timestamp"> & { diff: number }
 
-
-
-type AccelerometerData = AccelerometerMeasurement & { diff: number };
-
-const size = 3000;
+const size = 1500;
 let spot = 0;
 let hist: AccelerometerData[] = zero_hist();
-
+let start = Date.now();
 
 function zero_hist() {
-    return [...Array<AccelerometerData>(size)].fill({x: 0, y: 0, z: 0, timestamp: 0, diff: 0});
+    return [...Array<AccelerometerData>(size)].fill({x: 0, y: 0, z: 0, diff: 0});
 }
-
 
 type Out_Data = {
   file_name: string;
@@ -30,7 +25,7 @@ type Out_Data = {
 };
 
 export default function App() {
-  const [{ x, y, z, timestamp }, setData] = useState<AccelerometerMeasurement>({
+  const [{ x, y, z }, setData] = useState<AccelerometerMeasurement>({
     x: 0,
     y: 0,
     z: 0,
@@ -59,17 +54,17 @@ export default function App() {
             );
 
             await new Promise<void>((resolve) => {
-              sound.setOnPlaybackStatusUpdate(async (status) => {
+              sound.setOnPlaybackStatusUpdate((status) => {
                 if (status.isLoaded && status.didJustFinish) {
-                  hist = hist.filter((value => value.x != 0 && value.y != 0 && value.z != 0));
-                  const out: Out_Data = {history: hist, gender: gender, file_name: identifier};
+                  const out: Out_Data = {history: hist.filter((value => value.x != 0 && value.y != 0 && value.z != 0)), gender: gender, file_name: identifier};
                   console.log(out);
                   onStopButtonPress();
-                  await new Promise((resolve) => resolve(sound.unloadAsync()));
+                  sound.unloadAsync();
                   resolve();
                 }
               });
               setSub(Accelerometer.addListener(setData));
+              start = Date.now();
 
               sound.playAsync();
             });
@@ -85,6 +80,7 @@ export default function App() {
     if (sub) {
       sub.remove();
     }
+    Accelerometer.removeAllListeners();
     spot = 0;
     hist = zero_hist();
   };
@@ -101,11 +97,12 @@ export default function App() {
     // console.log(diff, timestamp, start);
     // console.log(x, y, z, diff);
     // setHist([...hist, { x, y, z, timestamp, diff } ]);
-    hist[spot] = {x: x, y: y, z: z, timestamp: 0, diff: diff};
+    hist[spot] = {x: x, y: y, z: z, diff: diff};
     spot = (spot + 1) % size;
     // if (spot == 0) {
     //     console.log(hist);
     // }
+    return () => {};
   }, [x, y, z, setData]);
 
   return (
