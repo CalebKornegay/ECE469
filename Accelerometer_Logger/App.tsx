@@ -4,6 +4,8 @@ import { Accelerometer, AccelerometerMeasurement } from "expo-sensors";
 import { useState, useEffect } from "react";
 import { Audio } from "expo-av";
 
+import AudioFiles from "./Audio";
+
 let start = Date.now();
 
 type AccelerometerData = AccelerometerMeasurement & { diff: number };
@@ -36,27 +38,29 @@ export default function App() {
   const onStartButtonPress = async () => {
     setSub(Accelerometer.addListener(setData));
 
-    for (let i = 0; i <= 60; ++i) {
-      for (let j = 0; j < 50; ++j) {
-        //const sound: Sound = new Sound(`data/0${i}/${Math.floor(j / 10)}_0${i}_${j % 5}`, Sound.MAIN_BUNDLE);
-        const { sound } = await Audio.Sound.createAsync(
-          //require(`data/0${i}/${Math.floor(j / 10)}_0${i}_${j % 5}`)
-          require(`./data/01/0_01_0.wav`)
-        );
-        await sound.playAsync();
-        // await new Promise<boolean>((resolve, reject) => {
-        //     sound.play((success: boolean) => {
-        //         const out_data: Out_Data = {file_name: `data/0${i}/${Math.floor(j / 10)}_0${i}_${j % 5}`, gender: 'male', data: hist};
-        //         if (success) {
-        //             resolve(success);
-        //         } else {
-        //             reject(success)
-        //         }
-        //         hist = [];
-        //         sound.release();
-        //         console.log(out_data);
-        //     });
-        // });
+    for (let i = 1; i <= 60; i++) {
+      for (let k = 0; k < 10; k++) {
+        for (let j = 0; j < 50; j++) {
+          const padded_i = i.toString().padStart(2, "0");
+          const identifier = `${k}_${padded_i}_${j}`;
+
+          if (AudioFiles[identifier]) {
+            const { sound } = await Audio.Sound.createAsync(
+              AudioFiles[identifier]
+            );
+
+            await new Promise<void>((resolve) => {
+              sound.setOnPlaybackStatusUpdate((status) => {
+                if (status.isLoaded && status.didJustFinish) {
+                  resolve();
+                }
+              });
+              sound.playAsync();
+            });
+          } else {
+            console.warn(`Audio file not found for identifier: ${identifier}`);
+          }
+        }
       }
     }
 
