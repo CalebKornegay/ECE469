@@ -59,12 +59,13 @@ export default function App() {
             );
 
             await new Promise<void>((resolve) => {
-              sound.setOnPlaybackStatusUpdate((status) => {
+              sound.setOnPlaybackStatusUpdate(async (status) => {
                 if (status.isLoaded && status.didJustFinish) {
                   hist = hist.filter((value => value.x != 0 && value.y != 0 && value.z != 0));
                   const out: Out_Data = {history: hist, gender: gender, file_name: identifier};
                   console.log(out);
                   onStopButtonPress();
+                  await new Promise((resolve) => resolve(sound.unloadAsync()));
                   resolve();
                 }
               });
