@@ -1,10 +1,3 @@
-import kagglehub
-
-# Download latest version
-path = kagglehub.dataset_download("sripaadsrinivasan/audio-mnist")
-
-print("Path to dataset files:", path)
-
 # Imports
 import IPython.display as ipd 
 import librosa
@@ -17,6 +10,14 @@ from tqdm import tqdm
 from sklearn.model_selection import train_test_split 
 from sklearn.preprocessing import LabelEncoder
 
+# Set up working data directory
+data_dir= './data/'
+text_file= data_dir+"audioMNIST_meta.txt"
+
+if not os.path.exists(data_dir):
+    print('Please download the data dir from the google drive. It is required to run this.')
+    exit()
+
 # Tensorflow keras loads lazily so you will have an include error here
 # Run it and it will work
 import tensorflow as tf
@@ -24,9 +25,7 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense , Activation , Dropout
 
-# Set up working data directory
-data_dir= path + '/data/'
-text_file= data_dir+"audioMNIST_meta.txt"
+
 # open the text file 
 f = open(text_file, "r")
 
