@@ -36,37 +36,17 @@ print(data)
 # list of all the folder id
 folder_id=list(range(1,60))
 
-# list to store all the gender
-# gender_list=[]
-
-# looping for each data in the text
-# for i in range(len(data)-6):
-    
-#     # finding the word gender in the data
-#     if data[i:i+6]=="gender":
-        
-#         # extracting the affiliated gender 
-#         txt=data[i+10:i+16]
-        
-#         # since male and female have different count of alphabets
-#         # preprocessing the data to get the actual text 
-#         if txt[-2]=='"':
-#             txt=txt[:len(txt)-2]
-        
-#         # appending the gender into the list
-#         gender_list.append(txt.split(","))
-
-# creating a dictonary that keeps track of folder id and associated gender
+# creating a dictonary that keeps track of folder id and associated person
 folder_dict=dict(zip(folder_id,folder_id))
 print(folder_dict)
 
 # save file names
 file_names=[]
 
-# sabe all gender of file names
+# save all person of file names
 person=[]
 
-# save all file id and gender
+# save all file id and person
 for dirname, _, filenames in os.walk(data_dir):
     for filename in filenames:
         if filename == '.DS_STORE':

@@ -63,7 +63,7 @@ print(folder_dict)
 # save file names
 file_names=[]
 
-# sabe all gender of file names
+# save all gender of file names
 gender=[]
 
 # save all file id and gender

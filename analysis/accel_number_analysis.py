@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Set up working data directory
 data_dir= './data/'
-text_file= data_dir+"audioMNIST_meta_equality.txt"
+text_file= data_dir+"audioMNIST_meta.txt"
 
 if not os.path.exists(data_dir):
     print('Please download the data dir from the google drive. It is required to run this.')
@@ -34,39 +34,19 @@ data=f.read()
 print(data)
 
 # list of all the folder id
-folder_id=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 26, 28, 36, 43, 47, 52, 56, 57, 58, 59, 60]
+folder_id=list(range(1,60))
 
-# list to store all the gender
-gender_list=[]
-
-# looping for each data in the text
-for i in range(len(data)-6):
-    
-    # finding the word gender in the data
-    if data[i:i+6]=="gender":
-        
-        # extracting the affiliated gender 
-        txt=data[i+10:i+16]
-        
-        # since male and female have different count of alphabets
-        # preprocessing the data to get the actual text 
-        if txt[-2]=='"':
-            txt=txt[:len(txt)-2]
-
-        # appending the gender into the list
-        gender_list.append(txt.split(","))
-
-# creating a dictonary that keeps track of folder id and associated gender
-folder_dict=dict(zip(folder_id,gender_list))
+# list stays the same
+folder_dict=folder_id
 print(folder_dict)
 
 # save file names
 file_names=[]
 
-# save all gender of file names
-gender=[]
+# save all number of file names
+number=[]
 
-# save all file id and gender
+# save all file id and number
 for dirname, _, filenames in os.walk(data_dir):
     for filename in filenames:
         if filename == '.DS_STORE':
@@ -76,7 +56,7 @@ for dirname, _, filenames in os.walk(data_dir):
             pass
         elif int(file_origin) in folder_dict:
             file_names.append(filename)
-            gender.append(folder_dict[int(file_origin)])
+            number.append(filename[0])
         else:
             pass
 
@@ -85,7 +65,7 @@ for dirname, _, filenames in os.walk(data_dir):
 import pandas as pd
 import numpy
 # create na new dataframe
-meta_data = pd.DataFrame(gender,columns=['class'])
+meta_data = pd.DataFrame(number,columns=['class'])
 meta_data["file_name"]=file_names
 
 meta_data.head()
