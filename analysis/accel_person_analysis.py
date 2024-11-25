@@ -37,34 +37,34 @@ print(data)
 folder_id=list(range(1,60))
 
 # list to store all the gender
-gender_list=[]
+# gender_list=[]
 
 # looping for each data in the text
-for i in range(len(data)-6):
+# for i in range(len(data)-6):
     
-    # finding the word gender in the data
-    if data[i:i+6]=="gender":
+#     # finding the word gender in the data
+#     if data[i:i+6]=="gender":
         
-        # extracting the affiliated gender 
-        txt=data[i+10:i+16]
+#         # extracting the affiliated gender 
+#         txt=data[i+10:i+16]
         
-        # since male and female have different count of alphabets
-        # preprocessing the data to get the actual text 
-        if txt[-2]=='"':
-            txt=txt[:len(txt)-2]
+#         # since male and female have different count of alphabets
+#         # preprocessing the data to get the actual text 
+#         if txt[-2]=='"':
+#             txt=txt[:len(txt)-2]
         
-        # appending the gender into the list
-        gender_list.append(txt.split(","))
+#         # appending the gender into the list
+#         gender_list.append(txt.split(","))
 
 # creating a dictonary that keeps track of folder id and associated gender
-folder_dict=dict(zip(folder_id,gender_list))
+folder_dict=dict(zip(folder_id,folder_id))
 print(folder_dict)
 
 # save file names
 file_names=[]
 
 # sabe all gender of file names
-gender=[]
+person=[]
 
 # save all file id and gender
 for dirname, _, filenames in os.walk(data_dir):
@@ -76,16 +76,16 @@ for dirname, _, filenames in os.walk(data_dir):
             pass
         elif int(file_origin) in folder_dict:
             file_names.append(filename)
-            gender.append(folder_dict[int(file_origin)])
+            person.append(folder_dict[int(file_origin)])
         else:
             pass
 
-print(file_names)
+#print(file_names)
 
 import pandas as pd
 import numpy
 # create na new dataframe
-meta_data = pd.DataFrame(gender,columns=['class'])
+meta_data = pd.DataFrame(person,columns=['class'])
 meta_data["file_name"]=file_names
 
 meta_data.head()

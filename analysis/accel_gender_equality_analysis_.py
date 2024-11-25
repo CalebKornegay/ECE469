@@ -80,7 +80,7 @@ for dirname, _, filenames in os.walk(data_dir):
         else:
             pass
 
-print(file_names)
+#print(file_names)
 
 import pandas as pd
 import numpy

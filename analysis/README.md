@@ -14,7 +14,7 @@ This is all in one file. Run `accel_gender_analysis.py`.
 If you want to see what the training is like with the normal audio files run `gender_analysis.py`
 
 
-# Gender Detection Default dataset results
+# Gender Detection: Default dataset results
 
 ```
 Model: "sequential"
@@ -84,7 +84,7 @@ Epoch 15/15
 The predicted class is: male
 ```
 
-# Gender Equal number of male/female (pruned male until only 12)
+# Gender Detection: Equal number of male/female (pruned male until only 12)
 ```
 Model: "sequential"
 _________________________________________________________________
@@ -153,4 +153,71 @@ Epoch 15/15
 The predicted class is: male
 ```
 
-# 
+# Person Identification
+```
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 256)               13056     
+                                                                 
+ activation (Activation)     (None, 256)               0         
+                                                                 
+ dropout (Dropout)           (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 256)               65792     
+                                                                 
+ activation_1 (Activation)   (None, 256)               0         
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_2 (Dense)             (None, 256)               65792     
+                                                                 
+ activation_2 (Activation)   (None, 256)               0         
+                                                                 
+ dropout_2 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_3 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_4 (Dense)             (None, 59)                7611      
+                                                                 
+ activation_3 (Activation)   (None, 59)                0         
+                                                                 
+=================================================================
+Total params: 185147 (723.23 KB)
+Trainable params: 185147 (723.23 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Epoch 1/15
+295/295 [==============================] - 2s 3ms/step - loss: 10.2254 - accuracy: 0.0153 - val_loss: 4.0788 - val_accuracy: 0.0136
+Epoch 2/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.1127 - accuracy: 0.0162 - val_loss: 4.0801 - val_accuracy: 0.0136
+Epoch 3/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0906 - accuracy: 0.0159 - val_loss: 4.0811 - val_accuracy: 0.0136
+Epoch 4/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0867 - accuracy: 0.0154 - val_loss: 4.0816 - val_accuracy: 0.0136
+Epoch 5/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0828 - accuracy: 0.0169 - val_loss: 4.0819 - val_accuracy: 0.0119
+Epoch 6/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0821 - accuracy: 0.0166 - val_loss: 4.0823 - val_accuracy: 0.0119
+Epoch 7/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0831 - accuracy: 0.0157 - val_loss: 4.0821 - val_accuracy: 0.0127
+Epoch 8/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0812 - accuracy: 0.0165 - val_loss: 4.0824 - val_accuracy: 0.0127
+Epoch 9/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0802 - accuracy: 0.0147 - val_loss: 4.0829 - val_accuracy: 0.0119
+Epoch 10/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0802 - accuracy: 0.0162 - val_loss: 4.0831 - val_accuracy: 0.0119
+Epoch 11/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0802 - accuracy: 0.0158 - val_loss: 4.0828 - val_accuracy: 0.0119
+Epoch 12/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0793 - accuracy: 0.0177 - val_loss: 4.0825 - val_accuracy: 0.0119
+Epoch 13/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0799 - accuracy: 0.0156 - val_loss: 4.0826 - val_accuracy: 0.0127
+Epoch 14/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0801 - accuracy: 0.0171 - val_loss: 4.0830 - val_accuracy: 0.0119
+Epoch 15/15
+295/295 [==============================] - 1s 3ms/step - loss: 4.0791 - accuracy: 0.0151 - val_loss: 4.0826 - val_accuracy: 0.0127
+1/1 [==============================] - 0s 69ms/step
+The predicted class is: 17
+```
