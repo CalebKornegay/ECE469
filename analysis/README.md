@@ -363,3 +363,72 @@ Epoch 15/15
 1/1 [==============================] - 0s 59ms/step
 The predicted class is: 0
 ```
+
+# Number Identification: Accel data gender balanced
+```
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 256)               13056     
+                                                                 
+ activation (Activation)     (None, 256)               0         
+                                                                 
+ dropout (Dropout)           (None, 256)               0         
+                                                                 
+ dense_1 (Dense)             (None, 256)               65792     
+                                                                 
+ activation_1 (Activation)   (None, 256)               0         
+                                                                 
+ dropout_1 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_2 (Dense)             (None, 256)               65792     
+                                                                 
+ activation_2 (Activation)   (None, 256)               0         
+                                                                 
+ dropout_2 (Dropout)         (None, 256)               0         
+                                                                 
+ dense_3 (Dense)             (None, 128)               32896     
+                                                                 
+ dense_4 (Dense)             (None, 10)                1290      
+                                                                 
+ activation_3 (Activation)   (None, 10)                0         
+                                                                 
+=================================================================
+Total params: 178826 (698.54 KB)
+Trainable params: 178826 (698.54 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+Epoch 1/15
+120/120 [==============================] - 1s 4ms/step - loss: 14.9593 - accuracy: 0.0987 - val_loss: 2.3134 - val_accuracy: 0.0948
+Epoch 2/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.7949 - accuracy: 0.1026 - val_loss: 2.3027 - val_accuracy: 0.1010
+Epoch 3/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.4245 - accuracy: 0.1052 - val_loss: 2.3026 - val_accuracy: 0.1021
+Epoch 4/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3499 - accuracy: 0.0997 - val_loss: 2.3034 - val_accuracy: 0.0938
+Epoch 5/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3325 - accuracy: 0.1008 - val_loss: 2.3029 - val_accuracy: 0.1000
+Epoch 6/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3246 - accuracy: 0.0958 - val_loss: 2.3038 - val_accuracy: 0.0938
+Epoch 7/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3160 - accuracy: 0.1021 - val_loss: 2.3036 - val_accuracy: 0.0938
+Epoch 8/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3201 - accuracy: 0.0896 - val_loss: 2.3036 - val_accuracy: 0.0969
+Epoch 9/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3160 - accuracy: 0.0930 - val_loss: 2.3035 - val_accuracy: 0.0948
+Epoch 10/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3096 - accuracy: 0.0992 - val_loss: 2.3039 - val_accuracy: 0.0969
+Epoch 11/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3096 - accuracy: 0.0945 - val_loss: 2.3030 - val_accuracy: 0.0990
+Epoch 12/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3094 - accuracy: 0.1016 - val_loss: 2.3036 - val_accuracy: 0.0969
+Epoch 13/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3077 - accuracy: 0.0945 - val_loss: 2.3032 - val_accuracy: 0.0938
+Epoch 14/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3077 - accuracy: 0.0951 - val_loss: 2.3032 - val_accuracy: 0.0990
+Epoch 15/15
+120/120 [==============================] - 0s 3ms/step - loss: 2.3106 - accuracy: 0.0896 - val_loss: 2.3037 - val_accuracy: 0.0938
+1/1 [==============================] - 0s 57ms/step
+The predicted class is: 1
+```

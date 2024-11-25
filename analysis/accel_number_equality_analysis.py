@@ -12,7 +12,7 @@ from sklearn.preprocessing import LabelEncoder
 
 # Set up working data directory
 data_dir= './data/'
-text_file= data_dir+"audioMNIST_meta.txt"
+text_file= data_dir+"audioMNIST_meta_equality.txt"
 
 if not os.path.exists(data_dir):
     print('Please download the data dir from the google drive. It is required to run this.')
@@ -35,6 +35,7 @@ print(data)
 
 # list of all the folder id
 folder_id=list(range(1,60))
+folder_id= [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 26, 28, 36, 43, 47, 52, 56, 57, 58, 59, 60]
 
 # list stays the same
 folder_dict=folder_id
