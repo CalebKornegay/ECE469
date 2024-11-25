@@ -14,7 +14,7 @@ This is all in one file. Run `accel_gender_analysis.py`.
 If you want to see what the training is like with the normal audio files run `gender_analysis.py`
 
 
-# Default dataset results
+# Gender Detection Default dataset results
 
 ```
 Model: "sequential"
@@ -84,7 +84,7 @@ Epoch 15/15
 The predicted class is: male
 ```
 
-# Equal number of male/female
+# Gender Equal number of male/female (pruned male until only 12)
 ```
 Model: "sequential"
 _________________________________________________________________
@@ -152,3 +152,5 @@ Epoch 15/15
 1/1 [==============================] - 0s 57ms/step
 The predicted class is: male
 ```
+
+# 
