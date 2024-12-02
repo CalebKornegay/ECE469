@@ -13,13 +13,11 @@ It is recommended to create a virtual environment with `python -m venv .venv`. A
 # Building/Running Model
 
 Files are as follows:
-* accel_gender_analysis: 
-* accel_gender_equality_analysis:
-* accel_number_analysis: 
-* accel_number_equality_analysis: 
-* accel_person_analysis: 
-
-This is all in one file. Run `accel_gender_analysis.py`.
+* accel_gender_analysis: `Uses all 60 speakers and trains a model to detect their gender.`
+* accel_gender_equality_analysis: `Uses 24 speakers only (12 male, 12 female) and trains a model to detect their gender.`
+* accel_number_analysis: `Uses all 60 speakers and trains a model to detect what number they are saying.`
+* accel_number_equality_analysis: `Uses 24 speakers only (12 male, 12 female) and trains a model to detect the number they are saying.`
+* accel_person_analysis: `Uses all 60 speakers and trains a model to detect which person is speaking.`
 
 If you want to see what the training is like with the normal audio files run `ref/gender_analysis.py`
 
