@@ -1,19 +1,33 @@
 # Analysis
 
-# REQUIREMENTS
+# Requirements
 
-You must have the data folder with all the .wavs. This can be obtained two ways:
+You must have the data folder with all the .wavs. This can be obtained three ways:
 
 * download the data.tar.gz from the google drive and unzip
 * download utf8_out.txt and utf8_out1.txt from the google drive and run `deal_with_output.py`
+* have the submission zip (data.tar.gz is included)
+
+It is recommended to create a virtual environment with `python -m venv .venv`. Activate with `. .venv/bin/activate`. Then install the required pip packages with `pip install -r requirements.txt`.
 
 # Building/Running Model
 
+Files are as follows:
+* accel_gender_analysis: 
+* accel_gender_equality_analysis:
+* accel_number_analysis: 
+* accel_number_equality_analysis: 
+* accel_person_analysis: 
+
 This is all in one file. Run `accel_gender_analysis.py`.
 
-If you want to see what the training is like with the normal audio files run `gender_analysis.py`
+If you want to see what the training is like with the normal audio files run `ref/gender_analysis.py`
 
 # Data source
+
+To create the accelerometer data folder extract data.tar.gz. If you do not have data.tar.gz download it from the google drive. (data.tar.gz is included in the tar submission)
+
+To get the original dataset run `setup/get_dataset`. To parse accelerometer output run the file through `setup/deal_with_output.py`.
 
 [https://www.kaggle.com/datasets/sripaadsrinivasan/audio-mnist](https://www.kaggle.com/datasets/sripaadsrinivasan/audio-mnist)
 
