@@ -20,4 +20,8 @@ tar:
 	cp -r analysis/data.tar.gz submission/analysis
 	cp -r analysis/README.md submission/analysis
 	cp -r analysis/requirements.txt submission/analysis
+	cp -r Makefile submission
+	cp -r README.md submission
+	cp -r .gitignore submission
+
 	tar -cvf submission.tar.gz submission
