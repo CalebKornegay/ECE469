@@ -6,7 +6,7 @@ clean:
 
 tar:
 	mkdir submission
-	cp -r Accelerometer_Logger/ submission
+	cp -r Accelerometer_Logger submission
 	mkdir submission/analysis
 	cp -r analysis/old_stuff submission/analysis
 	cp -r analysis/ref submission/analysis
