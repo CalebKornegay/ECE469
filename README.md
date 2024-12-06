@@ -6,6 +6,8 @@ Audio recovery using unprivileged accelerometer sensor data
 
 Contains the code that runs on the victims phone. You need to have npm installed to use this. Make sure to set node version to 20.
 
+You will need the audio dataset. Look at the analysis section for how to get this.
+
 Steps to build:
 * `npm i`: installs dependencies
 * `npm run`: will launch the application

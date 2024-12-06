@@ -27,6 +27,8 @@ To create the accelerometer data folder extract data.tar.gz. If you do not have 
 
 To get the original dataset run `setup/get_dataset`. To parse accelerometer output run the file through `setup/deal_with_output.py`.
 
+Copy it to where necessary. The data folder needs to be in the Accelerometer Logger folder for the logger to work.
+
 [https://www.kaggle.com/datasets/sripaadsrinivasan/audio-mnist](https://www.kaggle.com/datasets/sripaadsrinivasan/audio-mnist)
 
 
